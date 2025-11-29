@@ -33,14 +33,14 @@ dependencies:
   get: 4.7.3
   dio: ^5.7.0
 
-  firebase_core: ^4.2.1
-  firebase_auth: ^6.1.2
+  firebase_core: ^4.2.1 #firebase
+  firebase_auth: ^6.1.2 #authentication
   google_sign_in: ^7.2.0
 
   image_picker: ^1.1.2
   path_provider: ^2.1.5
   flutter_screenutil: ^5.9.3
-  cloud_firestore: ^6.1.0
+  cloud_firestore: ^6.1.0 #database
   image: ^4.5.4
   camera: ^0.11.3
   google_mlkit_image_labeling: ^0.14.1
