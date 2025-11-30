@@ -1,3 +1,37 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'dart:convert';
 
-final fetchCategoryProductProovider = FutureProvider((ref) async {final response = await http.get});
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:http/http.dart' as http;
+import 'package:shop_x/model/category_model.dart';
+import 'package:shop_x/model/product_model.dart';
+import 'package:shop_x/utils/constants.dart';
+
+final fetchProductsProvider = FutureProvider((ref) async {
+  final response = await http.get(Uri.parse("$baseUrl/products"));
+
+  final decode = jsonDecode(response.body);
+  
+  if (response.statusCode == 200) {
+    final rawProducts = decode["products"];
+    List<ProductModel> products = [];
+    for (final element in List.from(rawProducts)) {
+      products.add(ProductModel.fromMap(element));
+    }
+    return products;
+  }
+  throw Exception('Failed to fetch product');
+}); // FutureProvider
+
+final fetchCategoryProductProovider = FutureProvider((ref) async {
+  final response = await http.get(Uri.parse("$baseUrl/products/categories"));
+
+  // Decode, convert dari String ke Object
+  // Encode, convert dari Object ke String
+  final decode = jsonDecode(response.body);
+  List<CategoryModel> categories = [];
+
+  for (final element in List.from(decode)) {
+    categories.add(CategoryModel.fromMap(element));
+  }
+  return categories;
+});
