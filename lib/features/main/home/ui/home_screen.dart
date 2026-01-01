@@ -20,10 +20,10 @@ class HomeScreen extends ConsumerWidget {
             height: 48,
             child: categoriesState.when(
               /// SUccess
-              data: (data) => ListView.separated(
+              data: (product) => ListView.separated(
                 separatorBuilder: (context, index) => SizedBox(width: 8),
                 scrollDirection: Axis.horizontal,
-                itemCount: data.length,
+                itemCount: product.length,
                 itemBuilder: (context, index) {
                   return ChoiceChip(
                     visualDensity: const VisualDensity(
@@ -36,7 +36,7 @@ class HomeScreen extends ConsumerWidget {
                     checkmarkColor: Theme.of(context).primaryColor,
                     selected: false,
                     label: Text(
-                      data[index].name,
+                      product[index].name,
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Theme.of(context).primaryColor),
                     ),

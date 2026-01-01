@@ -18,6 +18,11 @@ class MainScreen extends ConsumerWidget {
     final bottomIndex = ref.watch(bottomNavigationBarProvider);
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
+        icon: Icon(Icons.camera_alt),        
+        label: Text('Snap & Find'),
+        onPressed: () async {},
+      ),
       appBar: AppBar(
         title: Text("Shop X"),
         actions: [
